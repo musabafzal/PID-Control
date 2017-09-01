@@ -37,6 +37,19 @@ void PID::UpdateError(double cte) {
 
   if (count==0) {
     prev_cte=cte;
+    count++;
+  }
+
+  errors[0] = cte;
+  errors[2] = cte - prev_cte;
+  prev_cte=cte;
+  errors[1] += cte;
+}
+
+void PID::UpdateErrorWithTwiddle(double cte) {
+
+  if (count==0) {
+    prev_cte=cte;
     best_err=Abs(cte);
     count++;
   }
@@ -90,6 +103,6 @@ void PID::UpdateError(double cte) {
 
 }
 
-double PID::TotalError() {
+double PID::SteerValue() {
   return - params[0] * errors[0] - params[1] * errors[1] - params[2] * errors[2];
 }

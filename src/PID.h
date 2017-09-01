@@ -57,9 +57,14 @@ public:
   void UpdateError(double cte);
 
   /*
+  * Update the PID error variables given cross track error with the help of twiddle.
+  */
+  void UpdateErrorWithTwiddle(double cte);
+
+  /*
   * Calculate the total PID error.
   */
-  double TotalError();
+  double SteerValue();
 };
 
 #endif /* PID_H */

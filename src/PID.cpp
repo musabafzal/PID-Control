@@ -68,7 +68,6 @@ void PID::UpdateErrorWithTwiddle(double cte) {
   }else if(it==2){
     err=Abs(cte);
     if(Abs(err)<Abs(best_err)){
-  //    cout<<"lol"<<endl;
       best_err=err;
       dparams[curr_param]*=1.1;
       it=1;
@@ -78,7 +77,6 @@ void PID::UpdateErrorWithTwiddle(double cte) {
         curr_param++;
       }
     }else{
-  //    cout<<"notlol"<<endl;
       it=3;
     }
   }else if(it==3){
